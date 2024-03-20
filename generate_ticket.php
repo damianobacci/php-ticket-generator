@@ -1,9 +1,10 @@
 <?php
 
-use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\{QRCode};
 require_once 'vendor/autoload.php';
 
 $name = $_POST['name'];
+$event = $_POST['event'];
 
 $data   = 'https://damianobacci.net';
 $qrcode = (new QRCode)->render($data);
@@ -17,6 +18,7 @@ $qrcode = (new QRCode)->render($data);
     </head>
     <body>
         <h2><?php echo $name ?></h2>
+        <h3><?php echo $event ?></h3>
         <div>
             <?php printf('<img src="%s" alt="QR Code" width="200px" />', $qrcode); ?>
         </div>

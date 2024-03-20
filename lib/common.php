@@ -1,0 +1,64 @@
+<?php
+
+/**
+ * Gets the root path of the project
+ * 
+ * @return string
+ */
+function getRootPath()
+{
+    return realpath(__DIR__ . '/..');
+}
+
+/**
+ * Gets the full path for the database file
+ * 
+ * @return string
+ */
+function getDatabasePath()
+{
+    return getRootPath() . '/data/data.sqlite';
+}
+
+/**
+ * Gets the DSN for the SQLite connection
+ * 
+ * @return string
+ */
+function getDsn()
+{
+    return 'sqlite:' . getDatabasePath();
+}
+
+/**
+ * Gets the PDO object for database access
+ * 
+ * @return \PDO
+ */
+function getPDO()
+{
+    $pdo = new PDO(getDsn());
+
+    // Foreign key constraints need to be enabled manually in SQLite
+    $result = $pdo->query('PRAGMA foreign_keys = ON');
+    if ($result === false)
+    {
+        throw new Exception('Could not turn on foreign key constraints');
+    }
+
+    return $pdo;
+}
+
+function fetchEvents(PDO $pdo) {
+    $sql = "
+    SELECT
+        name
+    FROM
+        events
+    ";
+    $stmt = $pdo->query($sql);
+    if ($stmt === false) {
+        throw new Exception('There was a problem running this query');
+    }
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}

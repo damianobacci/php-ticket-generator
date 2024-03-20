@@ -22,7 +22,7 @@ INSERT INTO
 INSERT INTO
 	events
 	(
-		name, date, location
+		name, date, location, description
 	)
 	VALUES
 	(
@@ -33,7 +33,7 @@ INSERT INTO
 INSERT INTO
 	events
 	(
-		name, date, location
+		name, date, location, description
 	)
 	VALUES
 	(
