@@ -26,7 +26,7 @@ INSERT INTO
 	)
 	VALUES
 	(
-		"Tech Conference 2025", datetime('now', '+15 months'), "Silicon Valley Arena", "The premiere tech conference in the world!"
+		"Tech Conference 2025", datetime('now', '+15 months'), "Silicon Valley Coliseum", "The premiere tech conference in the world!"
 	)
 ;
 
@@ -37,6 +37,6 @@ INSERT INTO
 	)
 	VALUES
 	(
-		"Tech Conference 2026", datetime('now', '+27 months'), "Silicon Valley Arena", "The premiere tech conference in the world!"
+		"Tech Conference 2026", datetime('now', '+27 months'), "Silicon Valley Field", "The premiere tech conference in the world!"
 	)
 ;
