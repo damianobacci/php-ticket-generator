@@ -52,7 +52,7 @@ function getPDO()
 function fetchEvents(PDO $pdo) {
     $sql = "
     SELECT
-        name
+        name, date, location, description
     FROM
         events
     ";
@@ -61,4 +61,22 @@ function fetchEvents(PDO $pdo) {
         throw new Exception('There was a problem running this query');
     }
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function fetchSpecificEvent(PDO $pdo, string $name) {
+    $sql = "
+    SELECT
+        date, location, description
+    FROM
+        events
+    WHERE
+        name = :name
+    ";
+    $stmt = $pdo->prepare($sql);
+    if (!$stmt) {
+        throw new Exception('There was a problem preparing this query');
+    }
+    $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+    $stmt->execute();
+    return  $eventData = $stmt->fetch(PDO::FETCH_ASSOC);
 }

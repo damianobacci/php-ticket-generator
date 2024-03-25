@@ -1,10 +1,14 @@
 <?php
-
+require_once 'lib/common.php';
 use chillerlan\QRCode\{QRCode};
 require_once 'vendor/autoload.php';
 
-$name = $_POST['name'];
-$event = $_POST['event'];
+
+$userName = $_POST['name'];
+$eventName = $_POST['event'];
+
+$pdo = getPDO();
+$eventData = fetchSpecificEvent($pdo, $eventName);
 
 $data   = 'https://damianobacci.net';
 $qrcode = (new QRCode)->render($data);
@@ -17,8 +21,9 @@ $qrcode = (new QRCode)->render($data);
         <?php require 'templates/head.php' ?>
     </head>
     <body>
-        <h2><?php echo $name ?></h2>
-        <h3><?php echo $event ?></h3>
+        <h2><?php echo $userName ?></h2>
+        <h3><?php echo $eventName ?></h3>
+        <p><?php echo $eventData["description"] ?></p>
         <div>
             <?php printf('<img src="%s" alt="QR Code" width="200px" />', $qrcode); ?>
         </div>
