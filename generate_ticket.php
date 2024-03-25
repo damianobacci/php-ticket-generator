@@ -21,20 +21,23 @@ $qrcode = (new QRCode)->render($data);
         <?php require 'templates/head.php' ?>
     </head>
     <body>
-        <h2><?php echo $userName ?></h2>
+        <?php require 'templates/navbar.php' ?>
+        <h1>Your generated ticket!</h1>
+        <h3><?php echo $userName ?></h3>
         <h3><?php echo $eventName ?></h3>
         <p><?php echo $eventData["date"] ?>,<?php echo $eventData["location"] ?></p>
         <p><?php echo $eventData["description"] ?></p>
         <div>
             <?php printf('<img src="%s" alt="QR Code" width="200px" />', $qrcode); ?>
         </div>
+
     <form action="pdf_generation_script.php" method="post">
         <input type="hidden" name="name" value="<?php echo htmlspecialchars($userName); ?>">
         <input type="hidden" name="event" value="<?php echo htmlspecialchars($eventName); ?>">
         <input type="hidden" name="description" value="<?php echo htmlspecialchars($eventData["description"]); ?>">
         <input type="hidden" name="date" value="<?php echo htmlspecialchars($eventData["date"]); ?>">
         <input type="hidden" name="location" value="<?php echo htmlspecialchars($eventData["location"]); ?>">
-        <button type="submit">Generate PDF</button>
+        <button type="submit">Download PDF</button>
     </form>
     </body>
 </html>

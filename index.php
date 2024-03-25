@@ -4,15 +4,16 @@ require_once 'lib/common.php';
 
 $pdo = getPDO();
 $data = fetchEvents($pdo);
-print_r($data);
 
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Event Ticket Generator</title>
+    <?php require 'templates/head.php' ?>
 </head>
 <body>
+    <?php require 'templates/navbar.php' ?>
     <h1>Generate Your Event Ticket</h1>
     <form action="generate_ticket.php" method="POST">
         <p>
