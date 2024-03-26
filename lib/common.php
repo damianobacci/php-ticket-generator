@@ -80,3 +80,9 @@ function fetchSpecificEvent(PDO $pdo, string $name) {
     $stmt->execute();
     return  $eventData = $stmt->fetch(PDO::FETCH_ASSOC);
 }
+
+function formatDate(string $sqlDate) {
+    $date = DateTime::createFromFormat('Y-m-d H:i:s', $sqlDate);
+
+    return $date->format('d M Y');
+}

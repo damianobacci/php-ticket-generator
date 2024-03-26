@@ -23,13 +23,15 @@ $qrcode = (new QRCode)->render($data);
     <body>
         <?php require 'templates/navbar.php' ?>
         <header><h1>Your generated ticket!</h1></header>
-    <section class="ticket">
+        <section class="ticket">
+        <div class="text">
         <h3><?php echo $userName ?></h3>
         <h3><?php echo $eventName ?></h3>
-        <p><?php echo $eventData["date"] ?>,<?php echo $eventData["location"] ?></p>
-        <p><?php echo $eventData["description"] ?></p>
-        <div>
-            <?php printf('<img class="qr" src="%s" alt="QR Code" width="200px" />', $qrcode); ?>
+        <h4><?php echo formatDate($eventData["date"]) ?>, <?php echo $eventData["location"] ?></h4>
+        <p><?php echo $eventData["description"] ?> </p>
+        </div>
+        <div class="qr">
+            <?php printf('<img  src="%s" alt="QR Code" width="200px" />', $qrcode); ?>
         </div>
     </section>
     <section>

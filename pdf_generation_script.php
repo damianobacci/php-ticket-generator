@@ -14,12 +14,18 @@ $data   = 'https://damianobacci.net';
 $qrcode = (new QRCode())->render($data);
 
 // Generate the HTML content
-$htmlContent = "<html><head><title>Event Ticket</title></head><body>";
+$htmlContent = "<html>
+                <head>
+                <title>Event Ticket</title>
+                <style>
+                
+                </style>
+                </head><body>";
 $htmlContent .= "<h2>" . htmlspecialchars($userName) . "</h2>";
 $htmlContent .= "<h3>" . htmlspecialchars($eventName) . "</h3>";
 $htmlContent .= "<p>" . htmlspecialchars($eventDescription) . "</p>";
 $htmlContent .= "<p>" . htmlspecialchars($eventLocation) . "</p>";
-$htmlContent .= "<p>" . htmlspecialchars($eventDate) . "</p>";
+$htmlContent .= "<p>" . htmlspecialchars(formatDate($eventDate)) . "</p>";
 $htmlContent .= '<img src="' . $qrcode . '" alt="QR Code" width="200px" />';
 $htmlContent .= "</body></html>";
 

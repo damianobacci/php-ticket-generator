@@ -4,4 +4,5 @@
     <li><a href="/events.php">All events</a></li>
     <li><a href="/add-event.php">Add an event</a></li>
   </ul>
+  <hr>
 </nav>

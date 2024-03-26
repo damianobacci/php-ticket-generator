@@ -27,7 +27,7 @@ $data = fetchEvents($pdo);
         </select>
         </p>
         <p>
-        <label for="name">Your Name:</label>
+        <label for="name">Please insert your name:</label>
         <input type="text" name="name" required></p>
         <input type="submit" value="Generate Ticket">
     </form>
