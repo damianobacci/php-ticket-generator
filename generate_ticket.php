@@ -17,7 +17,6 @@ $qrcode = (new QRCode)->render($data);
 <!DOCTYPE html>
 <html>
     <head>
-        <title>A blog application</title>
         <?php require 'templates/head.php' ?>
     </head>
     <body>
