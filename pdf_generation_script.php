@@ -17,17 +17,14 @@ $qrcode = (new QRCode())->render($data);
 $htmlContent = "<html>
                 <head>
                 <title>Event Ticket</title>
-                <style>
-                
-                </style>
-                </head><body>";
+                </head><body><section>";
 $htmlContent .= "<h2>" . htmlspecialchars($userName) . "</h2>";
 $htmlContent .= "<h3>" . htmlspecialchars($eventName) . "</h3>";
 $htmlContent .= "<p>" . htmlspecialchars($eventDescription) . "</p>";
 $htmlContent .= "<p>" . htmlspecialchars($eventLocation) . "</p>";
 $htmlContent .= "<p>" . htmlspecialchars(formatDate($eventDate)) . "</p>";
 $htmlContent .= '<img src="' . $qrcode . '" alt="QR Code" width="200px" />';
-$htmlContent .= "</body></html>";
+$htmlContent .= "</section></body></html>";
 
 // Call the createPDF function
 createPDF($htmlContent);

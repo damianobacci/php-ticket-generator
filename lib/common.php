@@ -81,8 +81,22 @@ function fetchSpecificEvent(PDO $pdo, string $name) {
     return  $eventData = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
+function addEvent(PDO $pdo, string $eventName, string $eventLocation, string $eventDate, string $eventDescription) {
+    $dateAdded = DateTime::createFromFormat('Y-m-d', $eventDate);
+    $formmatedDate = $dateAdded->format('Y-m-d H:i:s');
+    $sql = 'INSERT INTO events (name, date, location, description) VALUES (:name, :date, :location, :description)';
+    $stmt = $pdo->prepare($sql);
+    if (!$stmt) {
+        throw new Exception('There was a problem preparing this query');
+    }
+    $stmt->bindParam(':name', $eventName, PDO::PARAM_STR);
+    $stmt->bindParam(':location', $eventLocation, PDO::PARAM_STR);
+    $stmt->bindParam(':description', $eventDescription, PDO::PARAM_STR);
+    $stmt->bindParam(':date', $formmatedDate, PDO::PARAM_STR);
+    $stmt->execute();
+}
+
 function formatDate(string $sqlDate) {
     $date = DateTime::createFromFormat('Y-m-d H:i:s', $sqlDate);
-
     return $date->format('d M Y');
 }
