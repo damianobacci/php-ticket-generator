@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  gap: 10px;
+}
+
+header,
+section,
+nav {
+  padding: 1em;
+  font-family: "Nunito", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Bebas Neue", sans-serif;
+}
+
+input,
+select,
+p,
+button {
+  font-family: "Nunito", sans-serif;
+}
+
+.qr {
+  border: 1px solid black;
+  margin: 0.5em 0;
+}
+
+.ticket {
+  border: 1px solid black;
+  width: fit-content;
+  margin: 1em;
+}

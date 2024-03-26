@@ -14,7 +14,9 @@ $data = fetchEvents($pdo);
 </head>
 <body>
     <?php require 'templates/navbar.php' ?>
-    <h1>Generate Your Event Ticket</h1>
+    <header><h1>Generate Your Event Ticket</h1></header>
+    
+    <section>
     <form action="generate_ticket.php" method="POST">
         <p>
         <label for="name">Please select an event:</label>
@@ -29,5 +31,6 @@ $data = fetchEvents($pdo);
         <input type="text" name="name" required></p>
         <input type="submit" value="Generate Ticket">
     </form>
+    </section>
 </body>
 </html>
